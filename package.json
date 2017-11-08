@@ -1,9 +1,9 @@
 {
   "name": "express-scaffold",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ."
   },
   "dependencies": {
     "body-parser": "~1.18.2",
@@ -15,5 +15,18 @@
     "node-sass": "^4.6.0",
     "node-sass-middleware": "^0.9.8",
     "serve-favicon": "~2.4.5"
-  }
+  },
+  "description": "An express scaffold for starting projects",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sc0ttwad3/express-scaffold.git"
+  },
+  "author": "Scott Wade <sc0ttwad3@gmail.com> (http://sc0ttwad3.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sc0ttwad3/express-scaffold/issues"
+  },
+  "homepage": "https://github.com/sc0ttwad3/express-scaffold#readme"
 }
