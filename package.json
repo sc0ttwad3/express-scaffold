@@ -16,7 +16,7 @@
     "node-sass-middleware": "^0.9.8",
     "serve-favicon": "~2.4.5"
   },
-  "description": "An express scaffold for starting projects",
+  "description": "Simple Express server scaffolding",
   "main": "index.js",
   "devDependencies": {},
   "repository": {

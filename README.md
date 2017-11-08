@@ -2,11 +2,11 @@
 
 # express-scaffold
 
-An express scaffold for starting projects
+Simple Express server scaffolding
 
 ## Setup
 
-☕️ Pour one then clone the repository
+Pour ☕️ then clone the repository
 
 ```
 $ npm install
