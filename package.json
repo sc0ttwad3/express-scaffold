@@ -8,17 +8,19 @@
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
-    "debug": "^2.6.9",
-    "express": "^4.15.5",
+    "express": "^4.16.2",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
-    "node-sass": "^4.6.0",
-    "node-sass-middleware": "^0.9.8",
     "serve-favicon": "~2.4.5"
   },
   "description": "Simple Express server scaffolding",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "debug": "^3.1.0",
+    "eslint": "^4.11.0",
+    "node-sass": "^4.6.1",
+    "node-sass-middleware": "^0.11.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sc0ttwad3/express-scaffold.git"
