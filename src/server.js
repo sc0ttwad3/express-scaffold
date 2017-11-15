@@ -12,13 +12,11 @@ const app = require('./app');
 const debug = require('debug')('express-scaffold:server')
 const http = require('http')
 
-var port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-var server = http.createServer(app);
-//server.listen(port);
+const server = http.createServer(app);
 server.listen(port, () => console.log(chalk.bold.blue(`Express server listening on ${port} ...`)))
-
 server.on('error', onError);
 server.on('listening', onListening);
 
