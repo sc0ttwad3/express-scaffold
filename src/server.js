@@ -1,12 +1,4 @@
-/*
 
-async function bootstrap() {
-  const app = await NestFactory.create(ApplicationModule);
-  await app.listen(3000);
-}
-bootstrap();
-
-*/
 const chalk = require('chalk')
 const app = require('./app');
 const debug = require('debug')('express-scaffold:server')
