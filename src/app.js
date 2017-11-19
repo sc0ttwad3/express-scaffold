@@ -6,15 +6,17 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
 
+/***
+ *  Config new Express app instance.
+ */
+const app = express();
+// setup router
 const index = require('./routes/index');
 const users = require('./routes/users');
-
-const app = express();
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
+// middleware
 app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -27,7 +29,6 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-
 app.use('/', index);
 app.use('/users', users);
 
@@ -43,7 +44,6 @@ app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');
