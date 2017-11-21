@@ -4,8 +4,6 @@ const debug = require('debug')('express-scaffold:server')
 const http = require('http')
 const app = require('./app');
 
-const appError = require('./common/appError');
-
 const port = process.env.PORT || '3000';
 let user = null;
 
