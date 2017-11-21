@@ -5,7 +5,7 @@
  *    See specific recommendations section:
  *    https://www.joyent.com/node-js/production/design/errors
  */
-function appError(name, httpCode, description,isOperational) {
+function appError(name, httpCode, description, isOperational) {
   Error.call(this);
   Error.captureStackTrace(this);
   this.name = name;
