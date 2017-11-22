@@ -5,6 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
+const uuid = require('uuid/v4');
 
 /***
  *  Config new Express app instance.
@@ -29,7 +30,14 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-app.use('/', index);
+//app.use('/', index);
+app.get('/', (req, res) => {
+  //console.log(req);
+  const uniqueId = uuid();
+  res.send(`Hit home page. Received unique ID: ${uniqueId}\n`);
+  
+})
+
 app.use('/users', users);
 
 // catch 404 and forward to error handler

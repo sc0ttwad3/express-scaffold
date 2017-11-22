@@ -1,5 +1,5 @@
 {
-  "name": "express-scaffold",
+  "name": "oauth-openid-tutorial",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,7 +11,8 @@
     "express": "^4.16.2",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "~2.4.5",
+    "uuid": "^3.1.0"
   },
   "description": "Simple Express server scaffolding",
   "main": "index.js",

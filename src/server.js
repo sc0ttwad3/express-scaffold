@@ -4,12 +4,12 @@ const debug = require('debug')('express-scaffold:server')
 const http = require('http')
 const app = require('./app');
 
-const port = process.env.PORT || '3000';
-let user = null;
 
 /*
  *  Boostrap Express server
  */
+const port = process.env.PORT || '3000';
+
 async function bootstrap() {
   const server = await http.createServer(app);
   //server.on('error', onError);

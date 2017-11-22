@@ -1,8 +1,8 @@
 ![Logo of the project](./images/logo.sample.png)
 
-# express-scaffold
+# oauth-openid-tutorial
 
-Simple Express server scaffolding
+Simple Express server and OAuth 2.0/OpenID tutorial project
 
 ## Setup
 
