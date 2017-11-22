@@ -6,14 +6,29 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
 const uuid = require('uuid/v4');
+const session = require('express-session');
 
 /***
  *  Config new Express app instance.
  */
 const app = express();
+
 // setup router
 const index = require('./routes/index');
 const users = require('./routes/users');
+
+// add/configure middleware
+app.use(session({
+  genid: (req) => {
+    console.log('Inside session middleware...')
+    console.log(req.sessionID)
+    return uuid() // use for session IDs
+  },
+  secret: 'bad practise',
+  resave: false,
+  saveUninitilized: true
+}));
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -31,10 +46,11 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, '../public')));
 //app.use('/', index);
+
 app.get('/', (req, res) => {
-  //console.log(req);
-  const uniqueId = uuid();
-  res.send(`Hit home page. Received unique ID: ${uniqueId}\n`);
+  console.log('Inside request for root / callback function...');
+  console.log(req.sessionID)
+  res.send(`Hit home page. Received unique ID: ${req.sessionID}\n`);
   
 })
 
