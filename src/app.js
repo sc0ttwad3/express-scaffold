@@ -20,13 +20,13 @@ const users = require('./routes/users');
 // add/configure middleware
 app.use(session({
   genid: (req) => {
-    console.log('Inside session middleware...')
-    console.log(req.sessionID)
+    console.log('Inside session middleware...');
+    console.log(`req.sessionID: ${req.sessionID}`);
     return uuid() // use for session IDs
   },
   secret: 'bad practise',
   resave: false,
-  saveUninitilized: true
+  saveUninitialized: true
 }));
 
 // view engine setup
@@ -37,7 +37,8 @@ app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+// no longer needed for express-session to work
+//app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, '../public'),
   dest: path.join(__dirname, '../public'),
@@ -49,7 +50,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/', (req, res) => {
   console.log('Inside request for root / callback function...');
-  console.log(req.sessionID)
   res.send(`Hit home page. Received unique ID: ${req.sessionID}\n`);
   
 })
