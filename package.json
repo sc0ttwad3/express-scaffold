@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev:server": "nodemon --ignore sessions/'"
   },
   "dependencies": {
     "body-parser": "~1.18.2",

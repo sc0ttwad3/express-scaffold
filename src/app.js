@@ -8,6 +8,9 @@ const sassMiddleware = require('node-sass-middleware');
 const uuid = require('uuid/v4');
 const session = require('express-session');
 
+// Persistence
+const FileStore = require('session-file-store')(session);
+
 /***
  *  Config new Express app instance.
  */
@@ -24,6 +27,7 @@ app.use(session({
     console.log(`req.sessionID: ${req.sessionID}`);
     return uuid() // use for session IDs
   },
+  store: new FileStore(),
   secret: 'bad practise',
   resave: false,
   saveUninitialized: true
@@ -46,8 +50,8 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, '../public')));
-//app.use('/', index);
 
+//app.use('/', index);
 app.get('/', (req, res) => {
   console.log('Inside request for root / callback function...');
   res.send(`Hit home page. Received unique ID: ${req.sessionID}\n`);
