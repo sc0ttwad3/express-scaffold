@@ -31,3 +31,6 @@ npm-debug.log
 
 # Test cookies
 cookie*.txt
+
+# Express server sessions
+sessions
