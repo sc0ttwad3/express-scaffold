@@ -5,14 +5,16 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
+const session = require('express-session');
+const uuid = require('uuid/v4');
+
+const FileStore = require('session-file-store')(session);
 
 /***
  *  Config new Express app instance.
  */
 const app = express();
-// setup router
-const index = require('./routes/index');
-const users = require('./routes/users');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -29,7 +31,24 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(session({
+  genid: (req) => {
+    console.log('Inside the session middleware')
+    console.log(req.sessionID)
+    return uuid() // use UUIDs for session IDs
+  },
+  store: new FileStore(),
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
+
+// setup home index router
+const index = require('./routes/index');
 app.use('/', index);
+
+// setup eventual route for listing users? (Not Used Currently)
+const users = require('./routes/users');
 app.use('/users', users);
 
 // catch 404 and forward to error handler

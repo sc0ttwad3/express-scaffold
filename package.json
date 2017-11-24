@@ -3,15 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "dev:server": "nodemon --ignore ./sessions"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "hbs": "~4.0.1",
     "morgan": "~1.9.0",
-    "serve-favicon": "~2.4.5"
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "~2.4.5",
+    "session-file-store": "^1.1.2",
+    "uuid": "^3.1.0"
   },
   "description": "Simple Express server scaffolding",
   "main": "index.js",
@@ -19,7 +25,8 @@
     "debug": "^3.1.0",
     "eslint": "^4.11.0",
     "node-sass": "^4.6.1",
-    "node-sass-middleware": "^0.11.0"
+    "node-sass-middleware": "^0.11.0",
+    "nodemon": "^1.12.1"
   },
   "repository": {
     "type": "git",
