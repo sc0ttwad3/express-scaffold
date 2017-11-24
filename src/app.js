@@ -51,11 +51,24 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, '../public')));
 
-//app.use('/', index);
+// Need to figure out how to combine actual view with this
+// app.use('/', index);
 app.get('/', (req, res) => {
   console.log('Inside request for root / callback function...');
   res.send(`Hit home page. Received unique ID: ${req.sessionID}\n`);
   
+})
+
+// login routes
+app.get('/login', (req, res) => {
+  console.log('Inside GET request for /login callback function...');
+  res.send(`Hit login page. This sessionID: ${req.sessionID}\n`);
+})
+
+app.post('/login', (req, res) => {
+  console.log('Inside POST request /login callback function')
+  console.log(req.body)
+  res.send(`You posted to the login page!\n`)
 })
 
 app.use('/users', users);
