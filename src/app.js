@@ -44,17 +44,12 @@ app.use(session({
 }))
 
 // setup home index router
-// const index = require('./routes/index');
-app.use('/', (req, res) => {
-  console.log('Inside the homepage callback function');
-  console.log(req.sessionID);
-  res.render('index', { title: 'Express', session: req.sessionID });
-  // res.send('You hit the home page.');
-});
+const index = require('./routes/index');
+app.use('/', index);
 
 // setup eventual route for listing users? (Not Used Currently)
-// const users = require('./routes/users');
-// app.use('/users', users);
+const users = require('./routes/users');
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
