@@ -48,13 +48,13 @@ app.use(session({
 app.use('/', (req, res) => {
   console.log('Inside the homepage callback function');
   console.log(req.sessionID);
-  app.locals.sessionID = req.sessionID;
-  res.send('You hit the home page.');
+  res.render('index', { title: 'Express', session: req.sessionID });
+  // res.send('You hit the home page.');
 });
 
 // setup eventual route for listing users? (Not Used Currently)
-const users = require('./routes/users');
-app.use('/users', users);
+// const users = require('./routes/users');
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
