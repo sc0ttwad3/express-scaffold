@@ -5,33 +5,15 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
-const uuid = require('uuid/v4');
 const session = require('express-session');
+const uuid = require('uuid/v4');
 
-// Persistence
 const FileStore = require('session-file-store')(session);
 
 /***
  *  Config new Express app instance.
  */
 const app = express();
-
-// setup router
-const index = require('./routes/index');
-const users = require('./routes/users');
-
-// add/configure middleware
-app.use(session({
-  genid: (req) => {
-    console.log('Inside session middleware...');
-    console.log(`req.sessionID: ${req.sessionID}`);
-    return uuid() // use for session IDs
-  },
-  store: new FileStore(),
-  secret: 'bad practise',
-  resave: false,
-  saveUninitialized: true
-}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,7 +24,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // no longer needed for express-session to work
-//app.use(cookieParser());
+// app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, '../public'),
   dest: path.join(__dirname, '../public'),
@@ -51,26 +33,24 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, '../public')));
 
-// Need to figure out how to combine actual view with this
-// app.use('/', index);
-app.get('/', (req, res) => {
-  console.log('Inside request for root / callback function...');
-  res.send(`Hit home page. Received unique ID: ${req.sessionID}\n`);
-  
-})
+app.use(session({
+  genid: (req) => {
+    console.log('Inside the session middleware')
+    console.log(req.sessionID)
+    return uuid() // use UUIDs for session IDs
+  },
+  store: new FileStore(),
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
 
-// login routes
-app.get('/login', (req, res) => {
-  console.log('Inside GET request for /login callback function...');
-  res.send(`Hit login page. This sessionID: ${req.sessionID}\n`);
-})
+// setup home index router
+const index = require('./routes/index');
+app.use('/', index);
 
-app.post('/login', (req, res) => {
-  console.log('Inside POST request /login callback function')
-  console.log(req.body)
-  res.send(`You posted to the login page!\n`)
-})
-
+// setup eventual route for listing users? (Not Used Currently)
+const users = require('./routes/users');
 app.use('/users', users);
 
 // catch 404 and forward to error handler

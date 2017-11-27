@@ -35,5 +35,5 @@ npm-debug.log
 # Test cookies
 cookie*.txt
 
-# Express server sessions
+# Ignore sessions/ folder with session files
 sessions
