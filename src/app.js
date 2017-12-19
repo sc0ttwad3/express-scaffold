@@ -15,7 +15,7 @@ const moment = require('moment');
 const methodOverride = require('method-override');
 const multer = require('multer');
 const errorHandler = require('errorhandler');
-
+const helmet = require('helmet');
 const FileStore = require('session-file-store')(session);
 
 /***
@@ -62,7 +62,11 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true
-}))
+}));
+
+if (app.get('env') === 'production') {
+  app.use(helmet());
+}
 
 // setup home index router
 const index = require('./routes/index');
