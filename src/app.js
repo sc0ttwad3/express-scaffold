@@ -1,4 +1,5 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
@@ -14,12 +15,20 @@ const FileStore = require('session-file-store')(session);
 
 /***
  *  Config new Express app instance.
+ *  with Handlebars as template engine
  */
 const app = express();
-
-// view engine setup
+// @ts-ignore
+const hbs = exphbs.create({
+    defaultLayout: 'main',
+    // these two may be the defaults
+    layoutsDir: path.join(__dirname, 'views/layouts'),
+    partialsDir: path.join(__dirname, 'views/partials'),
+  });
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+app.enable('view cache'); // only when process.env.NODE_ENV === "production"
 
 // middleware
 app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
