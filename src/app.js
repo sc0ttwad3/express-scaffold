@@ -20,12 +20,12 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
 // middleware
 app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// no longer needed for express-session to work
 app.use(cookieParser());
 app.use(sassMiddleware({
   src: path.join(__dirname, '../public'),
@@ -41,6 +41,7 @@ app.use(session({
     console.log(req.sessionID)
     return uuid() // use UUIDs for session IDs
   },
+  // @ts-ignore
   store: new FileStore(),
   secret: 'keyboard cat',
   resave: false,
