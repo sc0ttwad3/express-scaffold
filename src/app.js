@@ -34,7 +34,6 @@ const hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
-app.enable('view cache'); // only when process.env.NODE_ENV === "production"
 
 // middleware
 app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
@@ -65,18 +64,21 @@ app.use(session({
   saveUninitialized: true
 }));
 
+// only when process.env.NODE_ENV === "development"
 if (app.get('env') === 'development') {
   app.use(errorHandler());
 }
 
+// only when process.env.NODE_ENV === "production"
 if (app.get('env') === 'production') {
   app.use(helmet());
+  app.enable('view cache'); 
 }
 
 // setup home index router
 const index = require('./routes/index');
 app.use('/', index);
-app.use('/users', users);
+// app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
