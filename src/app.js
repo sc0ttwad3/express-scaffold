@@ -61,10 +61,6 @@ app.use(session({
 const index = require('./routes/index');
 app.use('/', index);
 
-// setup eventual route for listing users? (Not Used Currently)
-const users = require('./routes/users');
-app.use('/users', users);
-
 // catch 404 and forward to error handler
 app.use((err, req, res, next) => {
   console.log('PAGE NOT FOUND: hit the 404 handler!');
