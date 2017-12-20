@@ -81,21 +81,26 @@ app.use('/', index);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
+  console.log('inside the 404 error handler');
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
+  console.log('inside the bottom-level error handler');
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  console.log(`Status: ${err.status}`)
+  console.log(`Stack [${err.stack}]`);
+
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', { title: err.status });
 });
 
 module.exports = app;
