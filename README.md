@@ -19,9 +19,9 @@ $ npm start
 $ npm run dev:server 
 ```
 
-Chota is a very minimal CSS framework that is clean and easy to use.
+[chota](https://jenil.github.io/chota/) is a new micro CSS framework that is clean and easy to use.
 
-[chota CSS Framework](https://jenil.github.io/chota/)
+
 
 ## Testing
 
