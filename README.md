@@ -1,6 +1,6 @@
 ![Logo of the project](./images/logo.sample.png)
 
-# oauth-openid-tutorial
+# express-scaffold
 
 Simple Express server, Sessions Filestore, Morgan logging, Helmet security measures and more... 
 
