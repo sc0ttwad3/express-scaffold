@@ -2,7 +2,7 @@
 
 # oauth-openid-tutorial
 
-Simple Express server and OAuth 2.0/OpenID tutorial project
+Simple Express server, Sessions Filestore, Morgan logging, Helmet security measures and more... 
 
 ## Setup
 
@@ -16,8 +16,12 @@ $ npm start
 ## Development
 
 ```
-$ npm start
+$ npm run dev:server 
 ```
+
+Chota is a very minimal CSS framework that is clean and easy to use.
+
+[chota CSS Framework](https://jenil.github.io/chota/)
 
 ## Testing
 
