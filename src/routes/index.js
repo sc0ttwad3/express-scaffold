@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
   console.log('-----------------------------------')
   console.log('Inside the homepage router function');
   console.log(req.sessionID);
-  res.render('index', { title: 'Express', session: req.sessionID });
+  res.render('index', { title: 'Express-Scaffold', session: req.sessionID });
 });
 
 module.exports = router;
