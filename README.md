@@ -21,6 +21,8 @@ $ npm run dev:server
 
 [chota](https://jenil.github.io/chota/) is a new micro CSS framework that is clean and easy to use.
 
+Need to override variables including the font-family. Here and in any html-scaffolds using this.
+
 
 
 ## Testing
