@@ -72,8 +72,17 @@ if (app.get('env') === 'development') {
 // only when process.env.NODE_ENV === "production"
 if (app.get('env') === 'production') {
   app.use(helmet());
-  app.enable('view cache'); 
+  app.enable('view cache');
 }
+
+
+/**
+ * Async/Await middleware once anything non-trivial should be add
+ *
+ * see: https://github.com/Abazhenov/express-async-handler
+ * and: https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
+ *
+ */
 
 // setup home index router
 const index = require('./routes/index');
