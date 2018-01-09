@@ -12,8 +12,8 @@ const port = process.env.PORT || '3000';
 
 async function bootstrap() {
   const server = await http.createServer(app);
-  //server.on('error', onError);
-  //server.on('listening', onListening);
+  // server.on('error', onError);
+  // server.on('listening', onListening);
   await server.listen(
     port,
     () => console.log(chalk.bold.blue(`Express server listening on ${port} ...`))

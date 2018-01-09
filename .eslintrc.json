@@ -1,4 +1,6 @@
 {
+  "extends": "airbnb-base",
+
   "rules": {
     "strict": 0,
     "bitwise": 0,
@@ -34,14 +36,9 @@
     "no-mixed-spaces-and-tabs": 0,
     "no-extra-semi": 0,
     "no-redeclare": 0,
-    "no-empty": 0
-  },
+    "no-empty": 0,
 
-  "env": {
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "globals": {
+    "comma-dangle": "off"
+
   }
 }

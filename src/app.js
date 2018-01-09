@@ -19,7 +19,7 @@ const helmet = require('helmet');
 
 const FileStore = require('session-file-store')(session);
 
-/***
+/** *
  *  Config new Express app instance.
  *  with Handlebars as template engine
  */
@@ -86,13 +86,14 @@ if (app.get('env') === 'production') {
 
 // setup home index router
 const index = require('./routes/index');
+
 app.use('/', index);
 // app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   console.log('inside the 404 error handler');
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
