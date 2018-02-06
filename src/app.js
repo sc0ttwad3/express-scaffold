@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
-const querystring = require('querystring')
+const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const sassMiddleware = require('node-sass-middleware');
@@ -26,11 +26,11 @@ const FileStore = require('session-file-store')(session);
 const app = express();
 // @ts-ignore
 const hbs = exphbs.create({
-    defaultLayout: 'main',
-    // these two may be the defaults
-    layoutsDir: path.join(__dirname, 'views/layouts'),
-    partialsDir: path.join(__dirname, 'views/partials'),
-  });
+  defaultLayout: 'main',
+  // these two may be the defaults
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  partialsDir: path.join(__dirname, 'views/partials')
+});
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
@@ -45,26 +45,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Need to VERIFY this Sass functionality!
-app.use(sassMiddleware({
-  src: path.join(__dirname, '../public'),
-  dest: path.join(__dirname, '../public'),
-  indentedSyntax: false, // true = .sass and false = .scss
-  sourceMap: true
-}));
+app.use(
+  sassMiddleware({
+    src: path.join(__dirname, '../public'),
+    dest: path.join(__dirname, '../public'),
+    indentedSyntax: false, // true = .sass and false = .scss
+    sourceMap: true
+  })
+);
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use(session({
-  genid: (req) => {
-    console.log('Inside the session middleware')
-    console.log(req.sessionID)
-    return uuid() // use UUIDs for session IDs
-  },
-  // @ts-ignore
-  store: new FileStore(),
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    genid: req => {
+      console.log('Inside the session middleware');
+      console.log(req.sessionID);
+      return uuid(); // use UUIDs for session IDs
+    },
+    // @ts-ignore
+    store: new FileStore(),
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true
+  })
+);
 
 // only when process.env.NODE_ENV === "development"
 if (app.get('env') === 'development') {
@@ -76,7 +80,6 @@ if (app.get('env') === 'production') {
   app.use(helmet());
   app.enable('view cache');
 }
-
 
 /**
  * Async/Await middleware once anything non-trivial should be add
@@ -106,7 +109,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  console.log(`Status: ${err.status}`)
+  console.log(`Status: ${err.status}`);
   console.log(`Stack [${err.stack}]`);
 
   // render the error page
