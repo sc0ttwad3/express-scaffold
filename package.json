@@ -1,6 +1,7 @@
 {
-  "name": "oauth-openid-tutorial",
-  "version": "0.1.0",
+  "name": "express-scaffold",
+  "description": "Simple Express server scaffolding",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "start": "node .",
@@ -25,7 +26,6 @@
     "session-file-store": "^1.1.2",
     "uuid": "^3.1.0"
   },
-  "description": "Simple Express server scaffolding",
   "main": "index.js",
   "devDependencies": {
     "debug": "^3.1.0",
