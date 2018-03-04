@@ -17,16 +17,3 @@ async function bootstrap() {
 
 bootstrap();
 
-/**
- *  Graceful shutdown - look to using 'terminus' if in container and Kubernets
- *
- *
- */
-process.on('SIGTERM', () => {
-  logger.info('shutdown started')
-  server.stop()
-    .then(closeMysqlConnection())
-    .then(() => {
-      logger.info('process is stopping')
-    })
-})
