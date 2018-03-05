@@ -1,6 +1,7 @@
 const chalk = require('chalk');
 const debug = require('debug')('express-scaffold:server');
 const http = require('http');
+
 const app = require('./app');
 
 /*
