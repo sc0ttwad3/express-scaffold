@@ -2,7 +2,7 @@
 
 # express-scaffold
 
-Simple Express server, Sessions Filestore, Morgan logging, Helmet security measures and more... 
+Simple Express server, Sessions Filestore, Morgan logging, Helmet security measures and more...
 
 ## Setup
 
@@ -16,7 +16,7 @@ $ npm start
 ## Development
 
 ```
-$ npm run dev:server 
+$ npm run dev:server
 ```
 
 [chota](https://jenil.github.io/chota/) is a new micro CSS framework that is clean and easy to use.
@@ -39,6 +39,7 @@ This project is still evolving to encompass further refinements and customizatio
 
 ### To Do
 
+See if Oauth information or other 'systems' need to be added or need to keep this super simple?
 ### License
 
 [MIT](LICENSE.md)
